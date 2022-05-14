@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  perspective: 1500px;
+  min-height: 600px;
+  min-width: 100%;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #7d91de;
+  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+  transform-origin: center left;
+}
+
+.about-block {
+  margin: 20px;
+  font-size: 1.3em;
+}
+
+li {
+  margin: 39px 17px -10px 16px;
+  font-size: 1.2em;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.modal {
+  width: 423px;
+  left: 42%;
+  display: block;
+  z-index: 100;
+}
+
+.grayBlock {
+  position: fixed;
+  background-color: rgb(51 49 49 / 52%);
+  z-index: 5;
+  top: -92px;
+  width: 100%;
+  height: 120%;
+}

@@ -1,0 +1,42 @@
+<table class="table table-bordered table-hover">
+  <thead class="table-primary">
+    <tr>
+      <th class="text-center"></th>
+      <th scope="col">Назва авіакомпанії</th>
+      <th scope="col">Кількість місць</th>
+      <th scope="col">Міста перельоту</th>
+      <th class="col">Дати перельоту</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticket of Tickets | slice: (page-1) * pageSize : page * pageSize; let i = index" scope="row"
+      [ngClass]="{'notAvailable': ticket. seats_number==0,'selectedcssclass' : ticket.is_checked }">
+      <td><input type="checkbox" (change)="Ticket_id(i)" [disabled]="ticket.seats_number == 0"
+          [(ngModel)]="ticket.is_checked"></td>
+      <td>{{ticket.airline_name}}</td>
+      <td>{{ticket.seats_number}}</td>
+      <td>{{ticket.flight_city_from}} <i class="fas fa-exchange-alt"></i> {{ticket.flight_city_to}}</td>
+      <td>{{ticket.flight_dates_to | date: 'dd.MM.YYYY'}}-{{ticket.flight_dates_from | date: 'dd.MM.YYYY'}}</td>
+    </tr>
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [maxSize]="10" [collectionSize]="Tickets.length">
+    </ngb-pagination>
+    <button (click)="SendTicket()" class="btn btn-primary mt-2 ml">Обрати</button>
+  </tbody>
+</table>
+<div class="modal" tabindex="-1" *ngIf="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{text}}</h5>
+      </div>
+      <div class="modal-footer" *ngIf="!status200">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="Order()">Замовити</button>
+        <button type="button" class="btn btn-primary" (click)="Close()">Переглянути ще</button>
+      </div>
+      <div class="modal-footer" *ngIf="status200">
+        <button type="button" class="btn btn-primary" (click)="CloseAll()">Закрити</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grayBlock" *ngIf="modal"></div>

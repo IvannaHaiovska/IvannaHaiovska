@@ -1,0 +1,50 @@
+table {
+  margin: 10px;
+  font-size: 1.3em;
+  width: 1253px;
+}
+
+ngb-pagination {
+  position: absolute;
+  bottom: -18px;
+  right: 41%;
+}
+
+.notAvailable {
+  background-color: rgb(176, 176, 176);
+  border: 1px solid rgb(176, 176, 176);
+}
+
+.ml {
+  position: absolute;
+  bottom: 11px;
+  right: 30%;
+}
+
+.selectedcssclass {
+  background-color: rgba(17, 183, 17, 0.765);
+  border: 1px solid rgba(17, 183, 17, 0.765);
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.modal {
+  width: 423px;
+  left: 42%;
+  display: block;
+  z-index: 100;
+  top: -100px;
+}
+
+.grayBlock {
+  position: fixed;
+  background-color: rgb(51 49 49 / 52%);
+  z-index: 5;
+  top: -92px;
+  width: 100%;
+  height: 125.5%;
+  left: 0%;
+}

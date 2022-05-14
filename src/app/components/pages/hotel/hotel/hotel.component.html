@@ -1,0 +1,25 @@
+<table class="table table-bordered table-hover">
+  <thead class="table-primary">
+    <tr>
+      <th class="text-center"></th>
+      <th scope="col">Назва готелю</th>
+      <th scope="col" class="w-2">Кількість місць</th>
+      <th scope="col">Місто, Країна</th>
+      <th class="col">Доступні дати </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hotel of Hotels | slice: (page-1) * pageSize : page * pageSize; let i = index" scope="row"
+      [ngClass]="{'notAvailable': hotel.vacancies_number==0,'selectedcssclass' : hotel.is_checked }">
+      <td><input type="checkbox" (change)="Hotel_id(hotel.id)" [disabled]="hotel.vacancies_number == 0"
+          [(ngModel)]="hotel.is_checked" name="hotel.hotel_name" value="hotel.id"></td>
+      <td>{{hotel.hotel_name}}</td>
+      <td>{{hotel.vacancies_number}}</td>
+      <td>{{hotel.country_city}}, {{hotel.country_name}}</td>
+      <td>{{hotel.available_dates_from | date: 'dd.MM.YYYY'}}-{{hotel.available_dates_to | date: 'dd.MM.YYYY'}}</td>
+    </tr>
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [maxSize]="10" [collectionSize]="Hotels.length">
+    </ngb-pagination>
+    <button (click)="SendHotel()" class="btn btn-primary mt-2 ml">Обрати</button>
+  </tbody>
+</table>

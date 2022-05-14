@@ -1,0 +1,24 @@
+<table class="table table-bordered table-hover">
+    <thead class="table-primary">
+      <tr>
+        <th class="text-center"></th>
+        <th scope="col">Назва країни</th>
+        <th scope="col">Тревел статус</th> <th scope="col">Кількість готелів на обраний вами період</th>
+        <th class="col">Кількість турів на обраний вами період</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of Countries | slice: (page-1) * pageSize : page * pageSize; let i = index"  scope="row" [ngClass]="{'notAvailable': !country.country_status || country.n_hotel==0,'selectedcssclass' : country.is_checked }">
+        <td><input type="checkbox" (change)="Country_id(country.id)" [disabled]="!country.country_status || country.n_hotel==0" [checked]="country.is_checked"></td>
+        <td>{{country.country_name}}</td>
+        <td>{{country.country_status ? 'Доступна' : 'Недоступна' }}</td>
+        <td>{{country.n_hotel}}</td>
+        <td>{{country.n_tour}}</td>
+      </tr>
+      <ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="Countries.length"></ngb-pagination>
+  <button (click)="SendCountry()" class="btn btn-primary mt-2 ml">Обрати</button>
+    </tbody>
+  </table>

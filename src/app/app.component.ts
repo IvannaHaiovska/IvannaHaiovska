@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lesson12';
+  public sortHotel: any;
+  public isCountry: any;
+  public sortTicket:any;
+
+  receiveFromChildHotel(event: string) {
+    this.sortHotel = event;
+  }
+  receiveFromChildTicket(event: string) {
+    this.sortTicket = event;
+    
+  }
+  receiveFromChildisCountry(event: boolean) {
+    this.isCountry = event;
+  }
 }

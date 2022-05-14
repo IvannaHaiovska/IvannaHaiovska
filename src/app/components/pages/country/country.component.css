@@ -1,0 +1,32 @@
+table {
+  margin: 10px;
+  font-size: 1.3em;
+  width: 102%;
+}
+
+ngb-pagination {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+}
+
+.notAvailable {
+  background-color: rgb(176, 176, 176);
+  border: 1px solid rgb(176, 176, 176);
+}
+
+.ml {
+  position: absolute;
+  bottom: 11px;
+  left: 62%;
+}
+
+.selectedcssclass {
+  background-color: rgba(17, 183, 17, 0.765);
+  border: 1px solid rgba(17, 183, 17, 0.765);
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}

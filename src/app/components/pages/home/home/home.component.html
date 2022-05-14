@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <!-- Sidebar Links -->
+    <ul class="list-unstyled components">
+      <li (click)="ShowCountries()">Країна</li>
+      <li (click)="ShowHotels()">Забронювати готель</li>
+      <li (click)="ShowTickets()">Забронювати квиток
+      </li>
+    </ul>
+  </nav>
+  <div class="about-block" *ngIf="visible">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga porro dolorum quae fugit architecto sit, eius in
+    dicta nostrum praesentium velit excepturi? Qui est voluptates aperiam quasi doloremque deserunt incidunt cumque nisi
+    porro ad! Adipisci beatae necessitatibus quis excepturi pariatur explicabo, perspiciatis eligendi ut aperiam laborum
+    nesciunt ex doloremque vero exercitationem quod quasi dignissimos totam. Maiores porro omnis sit nihil dicta
+    eligendi! Assumenda aliquam esse eligendi nobis, iusto debitis iste odit sunt delectus ex cumque velit et
+    repellendus veritatis tempora vel. Quos nemo iure eius quis dignissimos deleniti atque assumenda ratione, facilis
+    illo dolor totam perferendis nihil ducimus itaque quas est iusto. Blanditiis dolorem accusantium culpa itaque eum
+    dolores voluptatum tenetur assumenda? Iusto, ducimus nemo. Quas quod fuga dignissimos quis odio ut ullam, minima
+    blanditiis excepturi error commodi quisquam magni, ad aspernatur perferendis. Earum corporis soluta eveniet tempora
+    praesentium veritatis nam voluptatem assumenda suscipit beatae amet nulla, quas laborum nesciunt ipsam? Maxime
+    exercitationem id ipsam, tenetur quam debitis quaerat ab commodi qui corrupti impedit, eius blanditiis harum
+    possimus quia odit magni laboriosam sunt delectus quod sed labore corporis rerum eveniet? Possimus quisquam
+    perspiciatis cum, dolore assumenda, voluptatibus blanditiis molestias, nihil ipsam voluptas eaque? Aspernatur,
+    mollitia doloremque corporis veniam iste quas.
+  </div>
+  <app-country *ngIf="isCountry" (outToParentSelectedCountry)="receiveFromChildCountry($event)" [sortHotel]="sortHotel" [sortTicket]="sortTicket" [countrySelected]="countrySelected"></app-country>
+  <app-hotel *ngIf="isHotel" [countrySelected]="countrySelected" [sortHotel]="sortHotel" (outToParentSelectedHotel)="receiveFromChildHotel($event)" [hotelSelected]="hotelSelected"></app-hotel>
+  <app-ticket *ngIf="isTicket" [sortTicket]="sortTicket" (outToParentSelectedTicket)="receiveFromChildTicket($event)" [ticketSelected]="ticketSelected" [countrySelected]="countrySelected" [hotelSelected]="hotelSelected"></app-ticket>
+</div>
+<div class="modal" tabindex="-1" *ngIf="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{text}}</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModal()">Закрити</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grayBlock" *ngIf="modal"></div>
